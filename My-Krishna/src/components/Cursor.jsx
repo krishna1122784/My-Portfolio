@@ -3,10 +3,10 @@ import "./styles/Cursor.css";
 import gsap from "gsap";
 
 const Cursor = () => {
-  const cursorRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef(null);
   useEffect(() => {
     let hover = false;
-    const cursor = cursorRef.current!;
+    const cursor = cursorRef.current;
     const mousePos = { x: 0, y: 0 };
     const cursorPos = { x: 0, y: 0 };
     document.addEventListener("mousemove", (e) => {
@@ -19,21 +19,18 @@ const Cursor = () => {
         cursorPos.x += (mousePos.x - cursorPos.x) / delay;
         cursorPos.y += (mousePos.y - cursorPos.y) / delay;
         gsap.to(cursor, { x: cursorPos.x, y: cursorPos.y, duration: 0.1 });
-        // cursor.style.transform = `translate(${cursorPos.x}px, ${cursorPos.y}px)`;
       }
       requestAnimationFrame(loop);
     });
     document.querySelectorAll("[data-cursor]").forEach((item) => {
-      const element = item as HTMLElement;
-      element.addEventListener("mouseover", (e: MouseEvent) => {
-        const target = e.currentTarget as HTMLElement;
+      const element = item;
+      element.addEventListener("mouseover", (e) => {
+        const target = e.currentTarget;
         const rect = target.getBoundingClientRect();
 
         if (element.dataset.cursor === "icons") {
           cursor.classList.add("cursor-icons");
-
           gsap.to(cursor, { x: rect.left, y: rect.top, duration: 0.1 });
-          //   cursor.style.transform = `translate(${rect.left}px,${rect.top}px)`;
           cursor.style.setProperty("--cursorH", `${rect.height}px`);
           hover = true;
         }

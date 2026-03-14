@@ -11,13 +11,12 @@ import HoverLinks from "./HoverLinks";
 
 const SocialIcons = () => {
   useEffect(() => {
-    const social = document.getElementById("social") as HTMLElement;
+    const social = document.getElementById("social");
 
     social.querySelectorAll("span").forEach((item) => {
-      const elem = item as HTMLElement;
-      const link = elem.querySelector("a") as HTMLElement;
+      const link = item.querySelector("a");
 
-      const rect = elem.getBoundingClientRect();
+      const rect = item.getBoundingClientRect();
       let mouseX = rect.width / 2;
       let mouseY = rect.height / 2;
       let currentX = 0;
@@ -33,7 +32,7 @@ const SocialIcons = () => {
         requestAnimationFrame(updatePosition);
       };
 
-      const onMouseMove = (e: MouseEvent) => {
+      const onMouseMove = (e) => {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
@@ -51,7 +50,7 @@ const SocialIcons = () => {
       updatePosition();
 
       return () => {
-        elem.removeEventListener("mousemove", onMouseMove);
+        item.removeEventListener("mousemove", onMouseMove);
       };
     });
   }, []);
@@ -80,7 +79,7 @@ const SocialIcons = () => {
           </a>
         </span>
       </div>
-      <a className="resume-button" href="#">
+      <a className="resume-button" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
         <HoverLinks text="RESUME" />
         <span>
           <TbNotes />

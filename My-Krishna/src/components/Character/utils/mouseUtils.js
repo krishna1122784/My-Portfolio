@@ -1,31 +1,18 @@
 import * as THREE from "three";
 
-export const handleMouseMove = (
-  event: MouseEvent,
-  setMousePosition: (x: number, y: number) => void
-) => {
+export const handleMouseMove = (event, setMousePosition) => {
   const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
   const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
   setMousePosition(mouseX, mouseY);
 };
 
-export const handleTouchMove = (
-  event: TouchEvent,
-  setMousePosition: (x: number, y: number) => void
-) => {
+export const handleTouchMove = (event, setMousePosition) => {
   const mouseX = (event.touches[0].clientX / window.innerWidth) * 2 - 1;
   const mouseY = -(event.touches[0].clientY / window.innerHeight) * 2 + 1;
   setMousePosition(mouseX, mouseY);
 };
 
-export const handleTouchEnd = (
-  setMousePosition: (
-    x: number,
-    y: number,
-    interpolationX: number,
-    interpolationY: number
-  ) => void
-) => {
+export const handleTouchEnd = (setMousePosition) => {
   setTimeout(() => {
     setMousePosition(0, 0, 0.03, 0.03);
     setTimeout(() => {
@@ -35,12 +22,12 @@ export const handleTouchEnd = (
 };
 
 export const handleHeadRotation = (
-  headBone: THREE.Object3D,
-  mouseX: number,
-  mouseY: number,
-  interpolationX: number,
-  interpolationY: number,
-  lerp: (x: number, y: number, t: number) => number
+  headBone,
+  mouseX,
+  mouseY,
+  interpolationX,
+  interpolationY,
+  lerp
 ) => {
   if (!headBone) return;
   if (window.scrollY < 200) {

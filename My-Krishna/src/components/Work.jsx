@@ -8,19 +8,19 @@ const projects = [
     title: "Smart Attendance System",
     category: "Computer Vision",
     tools: "Python, YOLOv8, OpenCV, Liveness Detection",
-    image: "/images/radix.png", // Using existing placeholder
+    image: "/images/radix.png",
   },
   {
     title: "Gesture Control",
     category: "Home Automation",
     tools: "Python, OpenCV",
-    image: "/images/bond.png", // Using existing placeholder
+    image: "/images/bond.png",
   },
   {
     title: "Real-Time Object Detection",
     category: "Autonomous Systems",
     tools: "Python, YOLO, OpenCV",
-    image: "/images/sapphire.png", // Using existing placeholder
+    image: "/images/sapphire.png",
   },
 ];
 
@@ -29,7 +29,7 @@ const Work = () => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const goToSlide = useCallback(
-    (index: number) => {
+    (index) => {
       if (isAnimating) return;
       setIsAnimating(true);
       setCurrentIndex(index);

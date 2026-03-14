@@ -8,7 +8,6 @@ import {
   Physics,
   RigidBody,
   CylinderCollider,
-  RapierRigidBody,
 } from "@react-three/rapier";
 
 const textureLoader = new THREE.TextureLoader();
@@ -30,28 +29,20 @@ const spheres = [...Array(30)].map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
 }));
 
-type SphereProps = {
-  vec?: THREE.Vector3;
-  scale: number;
-  r?: typeof THREE.MathUtils.randFloatSpread;
-  material: THREE.MeshPhysicalMaterial;
-  isActive: boolean;
-};
-
 function SphereGeo({
   vec = new THREE.Vector3(),
   scale,
   r = THREE.MathUtils.randFloatSpread,
   material,
   isActive,
-}: SphereProps) {
-  const api = useRef<RapierRigidBody | null>(null);
+}) {
+  const api = useRef(null);
 
   useFrame((_state, delta) => {
     if (!isActive) return;
     delta = Math.min(0.1, delta);
     const impulse = vec
-      .copy(api.current!.translation())
+      .copy(api.current.translation())
       .normalize()
       .multiply(
         new THREE.Vector3(
@@ -91,13 +82,8 @@ function SphereGeo({
   );
 }
 
-type PointerProps = {
-  vec?: THREE.Vector3;
-  isActive: boolean;
-};
-
-function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
-  const ref = useRef<RapierRigidBody>(null);
+function Pointer({ vec = new THREE.Vector3(), isActive }) {
+  const ref = useRef(null);
 
   useFrame(({ pointer, viewport }) => {
     if (!isActive) return;
@@ -131,13 +117,12 @@ const TechStack = () => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
       const threshold = document
-        .getElementById("work")!
+        .getElementById("work")
         .getBoundingClientRect().top;
       setIsActive(scrollY > threshold);
     };
     document.querySelectorAll(".header a").forEach((elem) => {
-      const element = elem as HTMLAnchorElement;
-      element.addEventListener("click", () => {
+      elem.addEventListener("click", () => {
         const interval = setInterval(() => {
           handleScroll();
         }, 10);
