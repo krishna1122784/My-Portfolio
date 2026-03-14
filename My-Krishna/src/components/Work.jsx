@@ -5,6 +5,12 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
   {
+    title: "3D Interactive Portfolio",
+    category: "Full Stack Portfolio",
+    tools: "React, Three.js, GSAP, JavaScript",
+    image: "/images/preview.png",
+  },
+  {
     title: "Smart Attendance System",
     category: "Computer Vision",
     tools: "Python, YOLOv8, OpenCV, Liveness Detection",
