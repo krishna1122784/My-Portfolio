@@ -1,4 +1,4 @@
-# Krishna Choudhary - Portfolio Portfolio 🚀
+# Krishna - Portfolio 🚀
 
 I am a Computer Science Engineer (Chandigarh University) specializing in Full-Stack Development and AI Automation. I love building high-performance web apps with interactive 3D visuals and integrating smart Computer Vision solutions like YOLOv8.
 
