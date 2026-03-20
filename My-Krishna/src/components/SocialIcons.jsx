@@ -1,11 +1,10 @@
 import {
   FaGithub,
-  FaInstagram,
   FaLinkedinIn,
-  FaXTwitter,
 } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
+import { SiLeetcode } from "react-icons/si";
 import { useEffect } from "react";
 import HoverLinks from "./HoverLinks";
 
@@ -69,13 +68,8 @@ const SocialIcons = () => {
           </a>
         </span>
         <span>
-          <a href="#" target="_blank">
-            <FaXTwitter />
-          </a>
-        </span>
-        <span>
-          <a href="#" target="_blank">
-            <FaInstagram />
+          <a href="https://leetcode.com/u/krishna7482/" target="_blank">
+            <SiLeetcode />
           </a>
         </span>
       </div>

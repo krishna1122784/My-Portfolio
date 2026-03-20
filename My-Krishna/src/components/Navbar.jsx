@@ -45,7 +45,7 @@ const Navbar = () => {
         </a>
         <a
           href="mailto:choudharykrishna832@gmail.com"
-          className="header-email"
+          className="navbar-connect"
           data-cursor="disable"
         >
           choudharykrishna832@gmail.com
